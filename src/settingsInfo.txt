@@ -1,0 +1,2 @@
+sequencedSkipLimit - the amount of times in a row a player can skip
+colorDistance - how close the colors can be to each other

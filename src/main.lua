@@ -3,10 +3,11 @@ local json    = require("json")
 
 local version = "dev-1.0"
 local status  = "NotStarted" -- NotStarted InGame
-local map     = { 1, 2, 3, 4 }
+local map     = json.decode(
+    '{"version":1.0,"name":"testing","width":5,"turns":3,"turnTime":60,"author":"DynomiteWaffle","map":[2,2,0,4,4,2,2,0,4,4,0,0,0,0,0,5,5,0,3,3,5,5,0,3,3]}')
 local turn    = 0
 local users   = {}
-
+local colors  = {} --map numbers to colors
 
 -- info page
 app.add_handler(
@@ -14,9 +15,13 @@ app.add_handler(
     "/",
     function()
         -- TODO update server - mabey corotine
-        return '{"version":"' ..
-            version .. '","status":"' .. status .. '","players":' .. #users .. ',"turn":' .. turn .. '}',
-            { ["Content-Type"] = "json" }
+        local R = {
+            version = version,
+            status = status,
+            users = #users,
+            turn = turn
+        }
+        return json.encode(R), { ["Content-Type"] = "json" }
     end
 )
 -- get map
@@ -24,23 +29,47 @@ app.add_handler(
     "GET",
     "/map",
     function()
-        return "Under Construction"
+        return "Under Construction", { ["Content-Type"] = "json" }
     end
 )
--- get user info
+-- get map info/settings
+app.add_handler(
+    "GET",
+    "/map/info",
+    function()
+        local R = {
+            version = map.version,
+            name = map.name,
+            author = map.author,
+            turns = map.turns,
+            turnTime = map.turnTime,
+            width = map.width
+        }
+        return json.encode(R), { ["Content-Type"] = "json" }
+    end
+)
+-- get map colors/players
+app.add_handler(
+    "GET",
+    "/map/players",
+    function()
+        return json.encode(colors), { ["Content-Type"] = "json" }
+    end
+)
+-- get user info - give id in json - {"id":"example id"}
 app.add_handler(
     "GET",
     "/userinfo",
     function()
-        return "Under Construction"
+        return "Under Construction", { ["Content-Type"] = "json" }
     end
 )
--- move
+-- move - move piece - end turn
 app.add_handler(
     "PUT",
     "/move",
     function()
-        return "Under Construction"
+        return "Under Construction", { ["Content-Type"] = "json" }
     end
 )
 
@@ -91,6 +120,8 @@ app.add_handler(
 -- TODO force start
 -- TODO kick
 -- TODO get all users info
+-- TODO change map
+-- TODO end match
 
 
 local config = {

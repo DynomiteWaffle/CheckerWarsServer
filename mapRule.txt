@@ -1,0 +1,13 @@
+width - width of map
+version - not usefull for computers - for versioning maps
+turns - the amount of sequencal turns per player gets
+turnTime - the amount of time a turn takes to skip
+author - not usefull for computers - for credit/authentisity
+
+
+
+
+map literal
+0 - empty space - a space that players can go in
+1 - full space - a space that players can not go in
+3... - player space - number indicates player number
