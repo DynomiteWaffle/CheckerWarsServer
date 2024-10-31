@@ -5,6 +5,7 @@
     "turns":3,
     "turnTime":60,
     "author":"DynomiteWaffle",
+    "players":4,
     "map":[
         2,2,0,4,4,
         2,2,0,4,4,

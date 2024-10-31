@@ -3,6 +3,7 @@ version - not usefull for computers - for versioning maps
 turns - the amount of sequencal turns per player gets
 turnTime - the amount of time a turn takes to skip
 author - not usefull for computers - for credit/authentisity
+players - amount of different players on the map
 
 
 

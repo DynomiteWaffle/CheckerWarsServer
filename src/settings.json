@@ -1,4 +1,5 @@
 {
     "sequencedSkipLimit":3,
-    "colorDistance":20
+    "colorDistance":20,
+    "autoStart":true
 }
