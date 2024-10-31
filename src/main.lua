@@ -26,7 +26,6 @@ app.add_handler(
             version = version,
             status = status,
             users = #users,
-            turn = turn
         }
         return json.encode(R), { ["Content-Type"] = "json" }
     end
