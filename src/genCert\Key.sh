@@ -1,0 +1,1 @@
+openssl req -new -x509 -nodes -sha256 -days 365 -key server.key -out server.cert
